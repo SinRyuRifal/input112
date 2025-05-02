@@ -10,8 +10,13 @@ import io
 
 
 def setup_driver():
-    options = webdriver.ChromeOptions()
-    return webdriver.Chrome(options=options)
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--headless=new")  # Gunakan mode headless Chrome
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--window-size=1920,1080")
+    return webdriver.Chrome(options=chrome_options)
 
 
 def process_excel(file):
